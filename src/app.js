@@ -140,6 +140,7 @@ client.on("message", async msg => {
 
   if (
     msg.content.includes("sexo") ||
+    msg.content.includes("Sexo") ||
     msg.content.includes("comer sua mãe") ||
     msg.content.includes("transar")
   ) {
@@ -209,21 +210,20 @@ client.on("channelDelete", async delchannel => {
           { files: ["static/Junko_Laught.png"] }
         );
       } else {
-        await geralI.send(
-          "Meh, já passou, algo me diz que isso vai ter consequencias meio.... desesperadoras. Puhuhu.",
-          { files: ["static/Junko_Monokuma.png"] }
-        );
+        await geralI.send("Meh, já passou.", {
+          files: ["static/Junko_Monokuma.png"]
+        });
       }
     }
-    setTimeout(chance, 8000);
+    setTimeout(chance, 4000);
   }
 });
 
 client.on("guildUpdate", async function(oldg, newg) {
   const geralI = newg.channels.cache.get(process.env.ID_PTXC_GERAL);
 
-  if (newg.id == process.env.ID_PIADAS) {
-    await geralI.send(newg.name + "..., esse novo nome me soa, desesperador.");
+  if ((newg.id = process.env.ID_PIADAS)) {
+    await geralI.send(newg.name + ". esse novo nome me soa..., desesperador.");
   } else {
     return;
   }
@@ -244,7 +244,7 @@ client.on("ready", function() {
     if (list.length > 3 && geral1.name == "Geral I") {
       let number = parseInt(Math.random() * 100);
       return number;
-    } else if (list.length < 4 && geral1.name == "Call do Inferno") {
+    } else if (list.length < 4 && geral1.name == "Call do Desespero") {
       geral1.edit({ name: "Geral I" });
       return null;
     } else {
@@ -256,10 +256,10 @@ client.on("ready", function() {
     let number = await getcall();
     console.log(number);
 
-    if (number > 95) {
-      geral1.edit({ name: "Call do Inferno" });
+    if (number > 97) {
+      geral1.edit({ name: "Call do Desespero" });
       const connection = await geral1.join();
-      const play = connection.play("static/oceano.mp3");
+      const play = connection.play("static/desespero.mp3");
       play.on("finish", async () => {
         await geral1.leave();
       });
@@ -270,6 +270,37 @@ client.on("ready", function() {
   }
 
   setInterval(execute, 1800000);
+});
+
+//Extras
+
+client.on("message", async msg => {
+  if (msg.guild == process.env.ID_PIADAS) {
+    const retorno =
+      "Seu porco imbecil, como você quer ouvir algo sem estar em um canal de voz? Qual seu problema?";
+    if (msg.content == "não to brincando") {
+      if (msg.member.voice.channel) {
+        const connection = await msg.member.voice.channel.join();
+        const play = connection.play("static/oceano.mp3", { volume: 0.4 });
+        play.on("finish", async () => {
+          await msg.member.voice.channel.leave();
+        });
+      } else {
+        msg.channel.send(retorno);
+      }
+    }
+    if (msg.content == "bbb") {
+      if (msg.member.voice.channel) {
+        const connection = await msg.member.voice.channel.join();
+        const play = connection.play("static/bbb.mp3", { volume: 0.4 });
+        play.on("finish", async () => {
+          await msg.member.voice.channel.leave();
+        });
+      } else {
+        msg.channel.send(retorno);
+      }
+    }
+  }
 });
 
 client.login(process.env.TOKEN);
