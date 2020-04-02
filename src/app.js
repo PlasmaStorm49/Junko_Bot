@@ -16,5 +16,7 @@ functions.VoiceActor.getVoiceActor(client, axios);
 functions.EasterEggs.setEasterEggs(client);
 functions.DespairCall.randomizeDespairCall(client);
 functions.Extras.setExtras(client);
+functions.Randomize.getRandom(client);
+functions.Help.getHelp(client);
 
 client.login(process.env.TOKEN);

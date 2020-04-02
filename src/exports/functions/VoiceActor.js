@@ -48,10 +48,10 @@ async function getResult(sterm, axios) {
 
 function getVoiceActor(client, axios) {
   client.on("message", async msg => {
-    if (msg.content.slice(0, 2) !== "++") {
+    if (msg.content.slice(0, 4) !== "+dub") {
       return;
     }
-    const sterm = msg.content.slice(2);
+    const sterm = msg.content.slice(4);
     try {
       const result = await getResult(sterm, axios);
       let content = [];

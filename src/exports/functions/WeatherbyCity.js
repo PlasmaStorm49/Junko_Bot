@@ -12,11 +12,11 @@ async function getWeather(city, axios) {
 
 function getWeatherbyCity(client, axios) {
   client.on("message", async msg => {
-    if (msg.content.slice(0, 1) !== "%") {
+    if (msg.content.slice(0, 5) !== "+temp") {
       return;
     }
 
-    const city = msg.content.slice(1);
+    const city = msg.content.slice(5);
     try {
       const result = await getWeather(city, axios);
       await msg.reply(result);
