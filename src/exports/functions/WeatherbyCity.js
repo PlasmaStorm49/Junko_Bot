@@ -1,8 +1,5 @@
 const curl = city =>
-  "http://api.openweathermap.org/data/2.5/weather?q=" +
-  city +
-  "&appid=" +
-  process.env.API_CODE;
+  process.env.WEATHER_API_URL + city + "&appid=" + process.env.WEATHER_API_CODE;
 
 async function getWeather(city, axios) {
   const result = await axios.get(curl(city));

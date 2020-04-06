@@ -1,5 +1,5 @@
 function setEasterEggs(client) {
-  client.on("message", async msg => {
+  client.on("message", async (msg) => {
     if (msg.content.includes("quebrar") && msg.content.includes("regra")) {
       msg.channel.send(
         `A-Aonde? Aonde está o transgressor? Eu vou acabar com ele até o último pedacinho, juro que não questiono nada!`,
@@ -23,12 +23,12 @@ function setEasterEggs(client) {
         msg.author.bot == false)
     ) {
       msg.channel.send("Puhuhu", {
-        files: ["static/Junko_Monokuma.png"]
+        files: ["static/Junko_Monokuma.png"],
       });
     }
   });
 
-  client.on("guildMemberAdd", async newmember => {
+  client.on("guildMemberAdd", async (newmember) => {
     const geralI = newmember.guild.channels.cache.get(
       process.env.ID_PTXC_GERAL
     );
@@ -62,7 +62,7 @@ function setEasterEggs(client) {
     }
   });
 
-  client.on("channelDelete", async delchannel => {
+  client.on("channelDelete", async (delchannel) => {
     const geralI = delchannel.guild.channels.cache.get(
       process.env.ID_PTXC_GERAL
     );
@@ -84,7 +84,7 @@ function setEasterEggs(client) {
           );
         } else {
           await geralI.send("Meh, já passou.", {
-            files: ["static/Junko_Monokuma.png"]
+            files: ["static/Junko_Monokuma.png"],
           });
         }
       }
@@ -92,10 +92,10 @@ function setEasterEggs(client) {
     }
   });
 
-  client.on("guildUpdate", async function(oldg, newg) {
+  client.on("guildUpdate", async function (oldg, newg) {
     const geralI = newg.channels.cache.get(process.env.ID_PTXC_GERAL);
 
-    if ((newg.id = process.env.ID_PIADAS)) {
+    if (newg.id == process.env.ID_PIADAS) {
       await geralI.send(
         newg.name + ". esse novo nome me soa..., desesperador."
       );

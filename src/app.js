@@ -18,5 +18,6 @@ functions.DespairCall.randomizeDespairCall(client);
 functions.Extras.setExtras(client);
 functions.Randomize.getRandom(client);
 functions.Help.getHelp(client);
+functions.AntiCringe.deleteCringe(client);
 
 client.login(process.env.TOKEN);

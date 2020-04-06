@@ -1,5 +1,5 @@
 async function getResult(sterm, axios) {
-  const idurl = `https://api.jikan.moe/v3/search/people?q=` + sterm;
+  const idurl = process.env.MAL_API_SEARCHPEOPLE + sterm;
 
   async function getIDbysearch() {
     const idresult = await axios.get(idurl);
@@ -7,7 +7,7 @@ async function getResult(sterm, axios) {
   }
   async function getPersonbyID() {
     const id = await getIDbysearch();
-    const newurl = "https://api.jikan.moe/v3/person/" + id;
+    const newurl = process.env.MAL_API_PERSON + id;
     const personresult = await axios.get(newurl);
     return personresult.data.voice_acting_roles;
   }
