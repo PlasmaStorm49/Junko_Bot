@@ -19,5 +19,7 @@ functions.Extras.setExtras(client);
 functions.Randomize.getRandom(client);
 functions.Help.getHelp(client);
 functions.AntiCringe.deleteCringe(client);
+functions.UserScore.getList(client, axios);
+functions.MALSearch.getAnimes(client, axios);
 
 client.login(process.env.TOKEN);

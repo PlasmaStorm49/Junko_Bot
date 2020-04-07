@@ -5,7 +5,9 @@ const DespairCall = require("./functions/DespairCall");
 const Extras = require("./functions/Extras");
 const Randomize = require("./functions/Randomize");
 const Help = require("./functions/Help");
-const AntiCringe = require("./functions/AntiCringe.js");
+const AntiCringe = require("./functions/AntiCringe");
+const UserScore = require("./functions/UserScore");
+const MALSearch = require("./functions/MALSearch");
 
 module.exports = {
   Weather,
@@ -16,4 +18,6 @@ module.exports = {
   Randomize,
   Help,
   AntiCringe,
+  UserScore,
+  MALSearch,
 };
