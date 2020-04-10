@@ -1,5 +1,5 @@
 function randomizeDespairCall(client) {
-  client.on("ready", function() {
+  client.on("ready", function () {
     const piadas = client.guilds.cache.first();
     const geral1 = piadas.channels.cache.get(process.env.ID_PVC_GERAL1);
 
@@ -37,7 +37,7 @@ function randomizeDespairCall(client) {
       }
     }
 
-    setInterval(execute, 1800000);
+    setInterval(execute, 100000);
   });
 }
 

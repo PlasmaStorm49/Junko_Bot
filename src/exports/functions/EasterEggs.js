@@ -6,7 +6,9 @@ function setEasterEggs(client) {
         { files: ["static/Monokuma_Gun.png"] }
       );
     }
-
+    if (msg.content.includes("sai do utopia")) {
+      msg.channel.send("Pare de ser patético");
+    }
     if (
       msg.content.includes("sexo") ||
       msg.content.includes("Sexo") ||

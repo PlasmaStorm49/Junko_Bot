@@ -2,3 +2,4 @@
 .vscode
 static
 node_modules
+src/exports/functions/data/BirthdayData

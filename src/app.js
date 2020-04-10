@@ -21,5 +21,7 @@ functions.Help.getHelp(client);
 functions.AntiCringe.deleteCringe(client);
 functions.UserScore.getList(client, axios);
 functions.MALSearch.getAnimes(client, axios);
+functions.MonkeyJr.changeName(client);
+functions.Birthday.sendCongrats(client);
 
 client.login(process.env.TOKEN);

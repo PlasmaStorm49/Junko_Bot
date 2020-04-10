@@ -11,6 +11,9 @@ function deleteCringe(client) {
         lowcasemsgs.includes("magalu") ||
         lowcasemsgs.includes("spoppy") ||
         lowcasemsgs.includes("poyo") ||
+        lowcasemsgs.includes("foda-se") ||
+        lowcasemsgs.includes("fodase") ||
+        msg.mentions.users.has("306466692509204482") ||
         msg.mentions.users.has(process.env.ID_ALEATORIA)
       ) {
         msg.delete();

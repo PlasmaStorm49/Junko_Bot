@@ -8,6 +8,8 @@ const Help = require("./functions/Help");
 const AntiCringe = require("./functions/AntiCringe");
 const UserScore = require("./functions/UserScore");
 const MALSearch = require("./functions/MALSearch");
+const MonkeyJr = require("./functions/MonkeyJr");
+const Birthday = require("./functions/Birthday");
 
 module.exports = {
   Weather,
@@ -20,4 +22,6 @@ module.exports = {
   AntiCringe,
   UserScore,
   MALSearch,
+  MonkeyJr,
+  Birthday,
 };
