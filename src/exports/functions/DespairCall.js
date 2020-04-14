@@ -37,7 +37,7 @@ function randomizeDespairCall(client) {
       }
     }
 
-    setInterval(execute, 100000);
+    setInterval(execute, 1800000);
   });
 }
 
