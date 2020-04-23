@@ -28,37 +28,40 @@ function getAnimes(client, axios) {
           resultsresolved
       );
 
-      // client.on("message", async (msg) => {
+      const filter = (msg) =>
+        (!Number.isNaN(Number(msg.content)) && Number(msg.content) < 11) ||
+        msg.content.startsWith("+");
+      const collector = msg.channel.createMessageCollector(filter, {
+        max: 1,
+        time: 15000,
+      });
+      collector.on("collect", function (collected) {
+        if (Number.isNaN(Number(collected.content))) {
+          return;
+        }
+        let choice = collected.content - 1;
+        let embedConstructor = {
+          title: results[choice].title,
+          color: "#2e51a2",
+          image: { url: results[choice].image_url },
+          footer: {
+            text: `https://myanimelist.net/anime/${results[choice].mal_id}`,
+            icon_url:
+              "https://image.myanimelist.net/ui/OK6W_koKDTOqqqLDbIoPAiC8a86sHufn_jOI-JGtoCQ",
+          },
+          description: `**Tipo**: ${results[choice].type}
+              **Episódios:** ${results[choice].episodes}
+              **Mean Score**: ${results[choice].score}
+              **Membros:** ${results[choice].members}
+               **Sinopse:** ${results[choice].synopsis}`,
+        };
 
-      //   let nmessage = Number(msg.content);
-      //   if (!Number.isNaN(nmessage) && nmessage < 11) {
-      //     let choice = msg.content - 1;
-      //     const embedcontent = {
-      //       title: results[choice].title,
-      //       color: "#2e51a2",
-      //       image: { url: results[choice].image_url },
-      //       footer: {
-      //         text: `https://myanimelist.net/anime/${results[choice].mal_id}`,
-      //         icon_url:
-      //           "https://image.myanimelist.net/ui/OK6W_koKDTOqqqLDbIoPAiC8a86sHufn_jOI-JGtoCQ",
-      //       },
-      //       description: `**Tipo**: ${results[choice].type}
-      //       **Episódios:** ${results[choice].episodes}
-      //       **Mean Score**: ${results[choice].score}
-      //       **Membros:** ${results[choice].members}
-      //        **Sinopse:** ${results[choice].synopsis}`,
-      //     };
-      //     msg.channel.send({ embed: embedcontent });
-
-      //   } else if (msg.content == "cancelar") {
-      //     msg.reply("Pesquisa Cancelada!");
-
-      //   } else if (msg.content.slice(0, 10) == "+findanime") {
-      //   }
-      // });
+        msg.channel.send({ embed: embedConstructor });
+      });
     } catch (err) {
       if (err) {
         msg.reply("Houve um problema na sua pesquisa");
+        console.log(err);
       }
     }
   });
