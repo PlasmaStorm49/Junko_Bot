@@ -7,13 +7,7 @@ function deleteCringe(client) {
         lowcasemsgs.includes("malu") ||
         lowcasemsgs.includes("aleatória") ||
         lowcasemsgs.includes("aleatoria") ||
-        lowcasemsgs.includes("amor") ||
         lowcasemsgs.includes("magalu") ||
-        lowcasemsgs.includes("spoppy") ||
-        lowcasemsgs.includes("poyo") ||
-        lowcasemsgs.includes("foda-se") ||
-        lowcasemsgs.includes("fodase") ||
-        msg.mentions.users.has("306466692509204482") ||
         msg.mentions.users.has(process.env.ID_ALEATORIA)
       ) {
         msg.delete();
@@ -26,7 +20,8 @@ function deleteCringe(client) {
         lowcasemsga.includes("sloppy") ||
         lowcasemsga.includes("sloppyboy") ||
         lowcasemsga.includes("gab") ||
-        lowcasemsga.includes("amor") ||
+        lowcasemsgs.includes("spoppy") ||
+        lowcasemsgs.includes("poyo") ||
         msg.mentions.users.has(process.env.ID_SLOPPY)
       ) {
         msg.delete();
