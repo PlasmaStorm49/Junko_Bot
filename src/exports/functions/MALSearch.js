@@ -40,6 +40,7 @@ function getAnimes(client, axios) {
           return;
         }
         let choice = collected.content - 1;
+        let year = results[choice].start_date.slice(0, 4);
         let embedConstructor = {
           title: results[choice].title,
           color: "#2e51a2",
@@ -50,11 +51,13 @@ function getAnimes(client, axios) {
               "https://image.myanimelist.net/ui/OK6W_koKDTOqqqLDbIoPAiC8a86sHufn_jOI-JGtoCQ",
           },
           description: `**Tipo**: ${results[choice].type}
-              **Episódios:** ${results[choice].episodes}
+              **Episódios**: ${results[choice].episodes}
               **Mean Score**: ${results[choice].score}
-              **Membros:** ${results[choice].members}
+              **Membros**: ${results[choice].members}
+              **Ano do Início da Exibição**: ${year}
                **Sinopse:** ${results[choice].synopsis}`,
         };
+        console.log(results[choice]);
 
         msg.channel.send({ embed: embedConstructor });
       });
