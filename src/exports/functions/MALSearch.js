@@ -57,7 +57,6 @@ function getAnimes(client, axios) {
               **Ano do Início da Exibição**: ${year}
                **Sinopse:** ${results[choice].synopsis}`,
         };
-        console.log(results[choice]);
 
         msg.channel.send({ embed: embedConstructor });
       });
