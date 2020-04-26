@@ -7,6 +7,7 @@ const Help = require("./functions/Help");
 const UserScore = require("./functions/UserScore");
 const MALSearch = require("./functions/MALSearch");
 const MonkeyJr = require("./functions/MonkeyJr");
+const DespairAlt = require("./functions/DespairAlt");
 
 module.exports = {
   Weather,
@@ -18,4 +19,5 @@ module.exports = {
   UserScore,
   MALSearch,
   MonkeyJr,
+  DespairAlt,
 };
