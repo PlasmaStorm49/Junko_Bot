@@ -1,6 +1,5 @@
 const Weather = require("./functions/WeatherbyCity");
 const VoiceActor = require("./functions/VoiceActor");
-const DespairCall = require("./functions/DespairCall");
 const Extras = require("./functions/Extras");
 const Randomize = require("./functions/Randomize");
 const Help = require("./functions/Help");
@@ -12,7 +11,6 @@ const DespairAlt = require("./functions/DespairAlt");
 module.exports = {
   Weather,
   VoiceActor,
-  DespairCall,
   Extras,
   Randomize,
   Help,

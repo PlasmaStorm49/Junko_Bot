@@ -18,7 +18,7 @@ async function getResult(sterm, axios) {
     for (let i = 0; i < APIresult.length; i++) {
       finalresult.push(APIresult[i].character.name, APIresult[i].anime.name);
     }
-    const uniq = finalresult.reduce(function(a, b) {
+    const uniq = finalresult.reduce(function (a, b) {
       if (a.indexOf(b) < 0) {
         a.push(b);
       } else {
@@ -27,7 +27,7 @@ async function getResult(sterm, axios) {
       return a;
     }, []);
 
-    const getfinal = uniq.reduce(function(a, b) {
+    const getfinal = uniq.reduce(function (a, b) {
       if (b == "%_del%") {
         delete uniq[uniq.indexOf(b) + 1];
         delete uniq[uniq.indexOf(b)];
@@ -46,44 +46,42 @@ async function getResult(sterm, axios) {
   return freturn;
 }
 
-function getVoiceActor(client, axios) {
-  client.on("message", async msg => {
-    if (msg.content.slice(0, 4) !== "+dub") {
-      return;
-    }
-    const sterm = msg.content.slice(4);
-    try {
-      const result = await getResult(sterm, axios);
-      let content = [];
-      const limit = 1000;
-      const lines = result.split("\n");
-      const vezes = parseInt(result.length / limit);
-      for (let i = 0; i < vezes; i++) {
-        for (let j = 0; j < lines.length; j++) {
-          if (!content[i]) {
-            content[i] = [];
-            content[i].push(lines[j]);
-            lines.splice(j, 1);
-          }
+async function getVoiceActor(msg, axios) {
+  if (msg.content.slice(0, 4) !== "+dub") {
+    return;
+  }
+  const sterm = msg.content.slice(4);
+  try {
+    const result = await getResult(sterm, axios);
+    let content = [];
+    const limit = 1000;
+    const lines = result.split("\n");
+    const vezes = parseInt(result.length / limit);
+    for (let i = 0; i < vezes; i++) {
+      for (let j = 0; j < lines.length; j++) {
+        if (!content[i]) {
+          content[i] = [];
+          content[i].push(lines[j]);
+          lines.splice(j, 1);
+        }
 
-          if (content[i].join("\n").length + lines[j].length <= limit) {
-            content[i].push(lines[j]);
-            lines.splice(j, 1);
-          } else {
-            break;
-          }
+        if (content[i].join("\n").length + lines[j].length <= limit) {
+          content[i].push(lines[j]);
+          lines.splice(j, 1);
+        } else {
+          break;
         }
       }
-      content.push(lines);
-      for (let i = 0; i < content.length; i++) {
-        await msg.channel.send(content[0].join("\n"));
-      }
-    } catch (err) {
-      if (err) {
-        console.log(err);
-        await msg.channel.send("Dublador não encontrado");
-      }
     }
-  });
+    content.push(lines);
+    for (let i = 0; i < content.length; i++) {
+      await msg.channel.send(content[0].join("\n"));
+    }
+  } catch (err) {
+    if (err) {
+      console.log(err);
+      await msg.channel.send("Dublador não encontrado");
+    }
+  }
 }
 module.exports = { getVoiceActor };
