@@ -7,6 +7,7 @@ const UserScore = require("./functions/UserScore");
 const MALSearch = require("./functions/MALSearch");
 const MonkeyJr = require("./functions/MonkeyJr");
 const DespairAlt = require("./functions/DespairAlt");
+const CurrencyConvert = require("./functions/CurrencyConvert");
 
 module.exports = {
   Weather,
@@ -18,4 +19,5 @@ module.exports = {
   MALSearch,
   MonkeyJr,
   DespairAlt,
+  CurrencyConvert,
 };

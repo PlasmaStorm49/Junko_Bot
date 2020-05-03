@@ -21,6 +21,7 @@ client.on("message", async (msg) => {
   functions.MALSearch.getAnimes(msg, axios);
   functions.VoiceActor.getVoiceActor(msg, axios);
   functions.Weather.getWeatherbyCity(msg, axios);
+  functions.CurrencyConvert.getCurrency(msg, axios);
   functions.Extras.setExtras(msg);
   functions.Help.getHelp(msg);
   functions.Randomize.getRandom(msg);
