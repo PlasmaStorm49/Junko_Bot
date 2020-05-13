@@ -5,6 +5,12 @@ const axios = require("axios");
 
 dotenv.config();
 
+const MongoClient = require("mongodb").MongoClient;
+const uri = `mongodb+srv://Plasma:${process.env.DB_PASSOWRD}@projectdata-hatwd.gcp.mongodb.net/test?retryWrites=true&w=majority`;
+const mclient = new MongoClient(uri, {
+  useNewUrlParser: true,
+});
+
 client.on("ready", () => {
   functions.DespairAlt.randomdespair(client);
   console.log("Online");
@@ -13,10 +19,13 @@ client.on("ready", () => {
 const functions = require("./exports/getfunctions");
 
 client.on("message", async (msg) => {
+  //Não tira isso daqui pls
+  functions.DbTesting.DbInsert(msg, mclient, axios);
+
   if (!msg.content.startsWith("+")) {
     return;
   }
-
+  functions.DbTesting.FirstReply(msg);
   functions.UserScore.getList(msg, axios);
   functions.MALSearch.getAnimes(msg, axios);
   functions.VoiceActor.getVoiceActor(msg, axios);

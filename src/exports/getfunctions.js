@@ -8,6 +8,7 @@ const MALSearch = require("./functions/MALSearch");
 const MonkeyJr = require("./functions/MonkeyJr");
 const DespairAlt = require("./functions/DespairAlt");
 const CurrencyConvert = require("./functions/CurrencyConvert");
+const DbTesting = require("./functions/DbTesting");
 
 module.exports = {
   Weather,
@@ -20,4 +21,5 @@ module.exports = {
   MonkeyJr,
   DespairAlt,
   CurrencyConvert,
+  DbTesting,
 };
